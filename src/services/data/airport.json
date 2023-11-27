@@ -1,0 +1,191 @@
+[
+    {
+        "id": 3,
+        "ident": "AGGH",
+        "size": "large_airport",
+        "name": "Honiara International Airport",
+        "latitude": -9.428,
+        "longitude": 160.054993,
+        "municipalite": "Honiara"
+    },
+    {
+        "id": 67,
+        "ident": "AYPY",
+        "size": "large_airport",
+        "name": "Port Moresby Jacksons International Airport",
+        "latitude": -9.443380355834961,
+        "longitude": 147.22000122070312,
+        "municipalite": "Port Moresby"
+    },
+    {
+        "id":123,
+        "ident":"BIKF",
+        "size":"large_airport",
+        "name":"Keflavik International Airport",
+        "latitude":63.985001,
+        "longitude":-22.6056,
+        "municipalite":"Reykjavík"
+    },
+    {
+        "id": 1717,
+        "ident": "CYEG",
+        "size": "large_airport",
+        "name": "Edmonton International Airport",
+        "latitude": 53.3097,
+        "longitude": -113.580002,
+        "municipalite": "Edmonton"
+    },
+    {
+        "id": 1770,
+        "ident":"CYHZ",
+        "size":"large_airport",
+        "name":"Halifax / Stanfield International Airport",
+        "latitude": 44.8807983398,
+        "longitude": -63.5085983276,
+        "municipalite": "Halifax"
+    },
+    {
+        "id": 1840,
+        "ident":"CYOW",
+        "size":"large_airport",
+        "name":"Ottawa Macdonald-Cartier International Airport",
+        "latitude": 45.322498,
+        "longitude": -75.669197,
+        "municipalite": "   "
+    },
+    {
+        "id": 1864,
+        "ident":"CYQB",
+        "size":"large_airport",
+        "name":"Quebec Jean Lesage International Airport",
+        "latitude": 46.7911,
+        "longitude": -71.393303,
+        "municipalite": "Quebec"
+    },
+    {
+        "id": 1928,
+        "ident":"CYUL",
+        "size":"large_airport",
+        "name":"Montreal / Pierre Elliott Trudeau International Airport",
+        "latitude": 45.4706001282,
+        "longitude": -73.7407989502,
+        "municipalite": "Montréal"
+    },
+    {
+        "id": 1941,
+        "ident":"CYVR",
+        "size":"large_airport",
+        "name":"Vancouver International Airport",
+        "latitude": 49.193901062,
+        "longitude": -123.183998108,
+        "municipalite": "Vancouver"
+    },
+    {
+        "id": 1946,
+        "ident":"CYWG",
+        "size":"large_airport",
+        "name":"Winnipeg / James Armstrong Richardson International Airport",
+        "latitude": 49.909999847399995,
+        "longitude": -97.2398986816,
+        "municipalite": "Winnipeg"
+    },
+    {
+        "id": 1966,
+        "ident":"CYXS",
+        "size":"large_airport",
+        "name":"Prince George Airport",
+        "latitude": 53.884311,
+        "longitude": -122.666554,
+        "municipalite": "Prince George"
+    },
+    {
+        "id": 1969,
+        "ident":"CYXX",
+        "size":"large_airport",
+        "name":"Abbotsford International Airport",
+        "latitude": 49.025299,
+        "longitude": -122.361,
+        "municipalite": "Abbotsford"
+    },
+    {
+        "id": 1973,
+        "ident":"CYYC",
+        "size":"large_airport",
+        "name":"Calgary International Airport",
+        "latitude": 51.113899231,
+        "longitude": -114.019996643,
+        "municipalite": "Calgary"
+    },
+    {
+        "id": 1979,
+        "ident":"CYYJ",
+        "size":"large_airport",
+        "name":"Victoria International Airport",
+        "latitude": 48.6469,
+        "longitude": -123.426003,
+        "municipalite": "Victoria"
+    },
+    {
+        "id": 1986,
+        "ident":"CYYT",
+        "size":"large_airport",
+        "name":"St. John's International Airport",
+        "latitude": 47.618599,
+        "longitude": -52.7519,
+        "municipalite": "St. John's"
+    },
+    {
+        "id": 1990,
+        "ident": "CYYZ",
+        "size": "large_airport",
+        "name": "Toronto Lester B. Pearson International Airport",
+        "latitude": 43.6772,
+        "longitude": -79.6306,
+        "municipalite": "Toronto"
+    },
+    {
+        "id": 2050,
+        "ident": "DAAG",
+        "size":"large_airport",
+        "name":"Houari Boumediene Airport",
+        "latitude": 36.693886,
+        "longitude": 3.214531,
+        "municipalite": "Algiers"
+    },
+    {
+        "id": 2090,
+        "ident":"DGAA",
+        "size":"large_airport",
+        "name":"Kotoka International Airport",
+        "latitude": 5.605189800262451,
+        "longitude": -0.16678600013256073,
+        "municipalite": "Accra"
+    },
+    {
+        "id": 2104,
+        "ident": "DNAA",
+        "size":"large_airport",
+        "name":"Nnamdi Azikiwe International Airport",
+        "latitude": 9.006790161132812,
+        "longitude": 7.263169765472412,
+        "municipalite": "Abuja"
+    },
+    {
+        "id": 2118,
+        "ident":"DNMM",
+        "size": "large_airport",
+        "name": "Murtala Muhammed International Airport",
+        "latitude": 6.5773701667785645,
+        "longitude": 3.321160078048706,
+        "municipalite": "Lagos"
+    },
+    {
+        "id": 2125,
+        "ident":"DRRN",
+        "size":"large_airport",
+        "name": "Diori Hamani International Airport",
+        "latitude": 13.4815,
+        "longitude": 2.18361,
+        "municipalite": "Niamey"
+    }
+]

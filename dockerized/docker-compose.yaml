@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  simulizer:
+    image: sromany/simulizer-front
+    build:
+      context: ..
+      dockerfile: dockerized/Dockerfile
+    container_name: simulizer-front
+    labels:
+      traefik.enable: 'true'
+      traefik.http.routers.svelte.rule: Host(`simulizer-front.docker.localhost`)
+    networks:
+      - default
+    depends_on:
+      - traefik
+    expose:
+      - 80
