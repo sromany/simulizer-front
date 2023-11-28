@@ -4,8 +4,8 @@
         "ident": "AGGH",
         "size": "large_airport",
         "name": "Honiara International Airport",
-        "latitude": -9.428,
-        "longitude": 160.054993,
+        "longitude": -9.428,
+        "latitude": 160.054993,
         "municipalite": "Honiara"
     },
     {
@@ -13,8 +13,8 @@
         "ident": "AYPY",
         "size": "large_airport",
         "name": "Port Moresby Jacksons International Airport",
-        "latitude": -9.443380355834961,
-        "longitude": 147.22000122070312,
+        "longitude": -9.443380355834961,
+        "latitude": 147.22000122070312,
         "municipalite": "Port Moresby"
     },
     {
@@ -22,8 +22,8 @@
         "ident":"BIKF",
         "size":"large_airport",
         "name":"Keflavik International Airport",
-        "latitude":63.985001,
-        "longitude":-22.6056,
+        "longitude":63.985001,
+        "latitude":-22.6056,
         "municipalite":"Reykjavík"
     },
     {
@@ -31,8 +31,8 @@
         "ident": "CYEG",
         "size": "large_airport",
         "name": "Edmonton International Airport",
-        "latitude": 53.3097,
-        "longitude": -113.580002,
+        "longitude": 53.3097,
+        "latitude": -113.580002,
         "municipalite": "Edmonton"
     },
     {
@@ -40,8 +40,8 @@
         "ident":"CYHZ",
         "size":"large_airport",
         "name":"Halifax / Stanfield International Airport",
-        "latitude": 44.8807983398,
-        "longitude": -63.5085983276,
+        "longitude": 44.8807983398,
+        "latitude": -63.5085983276,
         "municipalite": "Halifax"
     },
     {
@@ -49,8 +49,8 @@
         "ident":"CYOW",
         "size":"large_airport",
         "name":"Ottawa Macdonald-Cartier International Airport",
-        "latitude": 45.322498,
-        "longitude": -75.669197,
+        "longitude": 45.322498,
+        "latitude": -75.669197,
         "municipalite": "   "
     },
     {
@@ -58,8 +58,8 @@
         "ident":"CYQB",
         "size":"large_airport",
         "name":"Quebec Jean Lesage International Airport",
-        "latitude": 46.7911,
-        "longitude": -71.393303,
+        "longitude": 46.7911,
+        "latitude": -71.393303,
         "municipalite": "Quebec"
     },
     {
@@ -67,8 +67,8 @@
         "ident":"CYUL",
         "size":"large_airport",
         "name":"Montreal / Pierre Elliott Trudeau International Airport",
-        "latitude": 45.4706001282,
-        "longitude": -73.7407989502,
+        "longitude": 45.4706001282,
+        "latitude": -73.7407989502,
         "municipalite": "Montréal"
     },
     {
@@ -76,8 +76,8 @@
         "ident":"CYVR",
         "size":"large_airport",
         "name":"Vancouver International Airport",
-        "latitude": 49.193901062,
-        "longitude": -123.183998108,
+        "longitude": 49.193901062,
+        "latitude": -123.183998108,
         "municipalite": "Vancouver"
     },
     {
@@ -85,8 +85,8 @@
         "ident":"CYWG",
         "size":"large_airport",
         "name":"Winnipeg / James Armstrong Richardson International Airport",
-        "latitude": 49.909999847399995,
-        "longitude": -97.2398986816,
+        "longitude": 49.909999847399995,
+        "latitude": -97.2398986816,
         "municipalite": "Winnipeg"
     },
     {
@@ -94,8 +94,8 @@
         "ident":"CYXS",
         "size":"large_airport",
         "name":"Prince George Airport",
-        "latitude": 53.884311,
-        "longitude": -122.666554,
+        "longitude": 53.884311,
+        "latitude": -122.666554,
         "municipalite": "Prince George"
     },
     {
@@ -103,8 +103,8 @@
         "ident":"CYXX",
         "size":"large_airport",
         "name":"Abbotsford International Airport",
-        "latitude": 49.025299,
-        "longitude": -122.361,
+        "longitude": 49.025299,
+        "latitude": -122.361,
         "municipalite": "Abbotsford"
     },
     {
@@ -112,8 +112,8 @@
         "ident":"CYYC",
         "size":"large_airport",
         "name":"Calgary International Airport",
-        "latitude": 51.113899231,
-        "longitude": -114.019996643,
+        "longitude": 51.113899231,
+        "latitude": -114.019996643,
         "municipalite": "Calgary"
     },
     {
@@ -121,8 +121,8 @@
         "ident":"CYYJ",
         "size":"large_airport",
         "name":"Victoria International Airport",
-        "latitude": 48.6469,
-        "longitude": -123.426003,
+        "longitude": 48.6469,
+        "latitude": -123.426003,
         "municipalite": "Victoria"
     },
     {
@@ -130,8 +130,8 @@
         "ident":"CYYT",
         "size":"large_airport",
         "name":"St. John's International Airport",
-        "latitude": 47.618599,
-        "longitude": -52.7519,
+        "longitude": 47.618599,
+        "latitude": -52.7519,
         "municipalite": "St. John's"
     },
     {
@@ -139,8 +139,8 @@
         "ident": "CYYZ",
         "size": "large_airport",
         "name": "Toronto Lester B. Pearson International Airport",
-        "latitude": 43.6772,
-        "longitude": -79.6306,
+        "longitude": 43.6772,
+        "latitude": -79.6306,
         "municipalite": "Toronto"
     },
     {
@@ -148,8 +148,8 @@
         "ident": "DAAG",
         "size":"large_airport",
         "name":"Houari Boumediene Airport",
-        "latitude": 36.693886,
-        "longitude": 3.214531,
+        "longitude": 36.693886,
+        "latitude": 3.214531,
         "municipalite": "Algiers"
     },
     {
@@ -157,8 +157,8 @@
         "ident":"DGAA",
         "size":"large_airport",
         "name":"Kotoka International Airport",
-        "latitude": 5.605189800262451,
-        "longitude": -0.16678600013256073,
+        "longitude": 5.605189800262451,
+        "latitude": -0.16678600013256073,
         "municipalite": "Accra"
     },
     {
@@ -166,8 +166,8 @@
         "ident": "DNAA",
         "size":"large_airport",
         "name":"Nnamdi Azikiwe International Airport",
-        "latitude": 9.006790161132812,
-        "longitude": 7.263169765472412,
+        "longitude": 9.006790161132812,
+        "latitude": 7.263169765472412,
         "municipalite": "Abuja"
     },
     {
@@ -175,8 +175,8 @@
         "ident":"DNMM",
         "size": "large_airport",
         "name": "Murtala Muhammed International Airport",
-        "latitude": 6.5773701667785645,
-        "longitude": 3.321160078048706,
+        "longitude": 6.5773701667785645,
+        "latitude": 3.321160078048706,
         "municipalite": "Lagos"
     },
     {
@@ -184,8 +184,8 @@
         "ident":"DRRN",
         "size":"large_airport",
         "name": "Diori Hamani International Airport",
-        "latitude": 13.4815,
-        "longitude": 2.18361,
+        "longitude": 13.4815,
+        "latitude": 2.18361,
         "municipalite": "Niamey"
     }
 ]
