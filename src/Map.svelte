@@ -38,6 +38,7 @@
 
     let airports = await getAirports();
     let airports_markers = airports.data.map((airport) => {
+      console.log(airport);
       return createCircleMarker([airport.latitude, airport.longitude]);
     });
 
