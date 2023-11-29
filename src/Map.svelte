@@ -10,8 +10,9 @@
   import VectorLayer from "ol/layer/Vector";
   import VectorSource from "ol/source/Vector";
 
-  import { createCircleMarker } from "./utils";
-  import { getAirports } from "./services/mock";
+  import { createCircleMarker, createPointMarker } from "./utils";
+  import { getAirports as mock } from "./services/mocks";
+  import { getAirports } from "./services/airports";
   import { useGeographic } from "ol/proj";
 
   useGeographic();
@@ -35,20 +36,12 @@
       }),
     });
 
-    const options = {
-      fill: "rgba(255, 0, 0, 0.2)",
-      stroke: "red",
-      strokeWidth: 2,
-      size: 1,
-    };
-
-    let markers = getAirports().map((airport) => {
-      console.log(
-        map.getPixelFromCoordinate([airport.latitude, airport.longitude]),
-      );
-      return createCircleMarker([airport.latitude, airport.longitude], options);
+    let airports = await getAirports();
+    let airports_markers = airports.map((airport) => {
+      return createCircleMarker([airport.latitude, airport.longitude]);
     });
-    vectorSource.addFeatures(markers);
+
+    vectorSource.addFeatures(airports_markers);
   });
 </script>
 
