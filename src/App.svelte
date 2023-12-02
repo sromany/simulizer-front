@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { Canvas } from "@threlte/core";
-  import Scene from "./Scene.svelte";
   import Map from "./Map.svelte";
 
   const WIDTH = 640;
@@ -15,4 +13,9 @@
 </main>
 
 <style>
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 </style>
