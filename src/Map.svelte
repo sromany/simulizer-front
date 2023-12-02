@@ -12,6 +12,7 @@
   onMount(async () => {
     setup();
   });
+  
 </script>
 
 <div id="map"></div>
