@@ -6,17 +6,15 @@
 
   import { setup } from "./utils";
   import { useGeographic } from "ol/proj";
-  import Popover from "./lib/Popover.svelte";
 
   useGeographic();
   onMount(async () => {
     setup();
   });
-  
+
 </script>
 
 <div id="map"></div>
-<Popover />
 
 <style>
   #map {
