@@ -10,24 +10,22 @@
   import VectorLayer from "ol/layer/Vector";
   import VectorSource from "ol/source/Vector";
 
-  import { createCircleMarker, createPointMarker } from "./utils";
-  import { getAirports as mock } from "./services/mocks";
-  import { getAirports } from "./services/airports";
+  import { createCircleMarker, createPointMarker, testSelect } from "./utils";
   import { useGeographic } from "ol/proj";
+  import { getAirports } from "./services/airports";
 
   useGeographic();
 
   onMount(async () => {
     const vectorSource = new VectorSource();
-    const vectorLayer = new VectorLayer({
-      source: vectorSource,
-    });
     const map = new Map({
       layers: [
         new TileLayer({
           source: new OSM(),
         }),
-        vectorLayer,
+        new VectorLayer({
+          source: vectorSource,
+        }),
       ],
       target: "map",
       view: new View({
@@ -37,11 +35,18 @@
     });
 
     let airports = await getAirports();
-    let airports_markers = airports.map((airport) => {
-      return createCircleMarker([airport.latitude, airport.longitude]);
+    let airports_markers = airports.data.map((airport) => {
+      const a = createCircleMarker([airport.longitude, airport.latitude]);
+      console.info(
+        `${a.values_.geometry.flatCoordinates} === ${[
+          airport.longitude,
+          airport.latitude,
+        ]}`,
+      );
+      return a;
     });
-
     vectorSource.addFeatures(airports_markers);
+    testSelect(map);
   });
 </script>
 
@@ -51,5 +56,6 @@
   #map {
     width: 100vw;
     height: 100vh;
+    color: rgb(255, 80, 80);
   }
 </style>
