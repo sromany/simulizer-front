@@ -50,7 +50,7 @@ export function createPointMarker(coordinates: Array<number>, options: Options =
   return feature;
 }
 
-export function testSelect(map: Map) {
+function setupSelectFeatures(map: Map) {
   const selected = new Style({
     fill: new Fill({
       color: "#eeeeee",
@@ -61,22 +61,20 @@ export function testSelect(map: Map) {
     }),
   });
 
-  // function selectStyle(feature: any) {
-  //   const color = feature.get("COLOR") || "rgb(255, 80, 80)";
-  //   selected.getFill().setColor(color);
-  //   return selected;
-  // }
-  // select interaction working on "pointermove"
+  // select interaction
   const selectClick = new Select({
     condition: click,
-    // style: selectStyle,
 
+    // style: selectStyle,
+  });
+  selectClick.on("select", function (evt) {
+    console.log(evt.target.getFeatures())
   });
 
   map.addInteraction(selectClick);
-    selectClick.on("select", function (e) {
-  });
 }
+
+
 
 export async function setup() {
   const vectorSource = new VectorSource();
@@ -95,6 +93,7 @@ export async function setup() {
       zoom: 2,
     }),
   });
+
   let has_next_page = true;
   let id = 0;
   do {
@@ -104,6 +103,7 @@ export async function setup() {
     });
     vectorSource.addFeatures(airports_markers);
     has_next_page = airports.meta.hasNextPage;
-  } while (has_next_page);
-  testSelect(map);
+  } while (has_next_page && false);
+
+  setupSelectFeatures(map);
 }
