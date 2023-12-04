@@ -1,23 +1,35 @@
-<script>
+<script lang="ts">
+    import { onMount } from "svelte";
+
     export let name = "Welcome to OpenLayers";
-    export let coords = [0.0, 0.0];
+    export let coords = { x: 0, y: 0 };
+    export let popup: HTMLElement;
+
+    onMount(async () => {
+        popup.setAttribute("hidden", "true");
+    });
 </script>
 
-<div class="popover show" style="inset: {coords[0]} {coords[1]} auto auto;" role="tooltip" data-popper-placement="left">
+<div
+    bind:this={popup}
+    class="popover show"
+    role="tooltip"
+    data-popper-placement="left"
+>
     <div class="popover-arrow"></div>
     <h3 class="popover-header">{name}</h3>
     <div class="popover-body">
         <p>The location you clicked was:</p>
-        <code>Lat: {coords[1]} / Lon: {coords[0]}</code>
+        <code>Lat: {coords.y} / Lon: {coords.x}</code>
     </div>
 </div>
 
 <style>
     .popover-arrow {
+        position: relative;
         width: 12px;
         height: 12px;
         background-color: #ffffff;
-        position: relative;
         inset: 92px 142px;
         border: gray solid 1px;
         border-top: none;
@@ -41,6 +53,6 @@
         color: #212529;
         width: 300px;
         height: fit-content;
-        position: relative;
+        position: absolute;
     }
 </style>

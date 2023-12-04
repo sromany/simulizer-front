@@ -2,7 +2,7 @@ import Circle from "ol/geom/Circle";
 import Feature from "ol/Feature";
 import { Style, Fill, Stroke } from "ol/style";
 import { Point } from "ol/geom";
-import { View } from "ol";
+import { Overlay, View } from "ol";
 import Select from "ol/interaction/Select";
 import { click } from "ol/events/condition";
 import VectorSource from "ol/source/Vector";
@@ -51,32 +51,19 @@ export function createPointMarker(coordinates: Array<number>, options: Options =
 }
 
 function setupSelectFeatures(map: Map) {
-  const selected = new Style({
-    fill: new Fill({
-      color: "#eeeeee",
-    }),
-    stroke: new Stroke({
-      color: "rgba(255, 255, 255, 0.7)",
-      width: 2,
-    }),
-  });
-
   // select interaction
   const selectClick = new Select({
     condition: click,
-
-    // style: selectStyle,
   });
   selectClick.on("select", function (evt) {
-    console.log(evt.target.getFeatures())
+    console.log(evt)
   });
-
   map.addInteraction(selectClick);
 }
 
 
 
-export async function setup() {
+export async function setup(node: HTMLElement, coords: any) {
   const vectorSource = new VectorSource();
   const map = new Map({
     layers: [
@@ -105,5 +92,26 @@ export async function setup() {
     has_next_page = airports.meta.hasNextPage;
   } while (has_next_page && false);
 
-  setupSelectFeatures(map);
+
+  // Popup overlay
+  let popup = new Overlay({
+    element: node,
+  });
+  map.addOverlay(popup);
+  // ---------------------------------------------
+
+  // select interaction
+  const selectClick = new Select({
+    condition: click,
+  });
+  selectClick.on("select", function (evt) {
+    console.log(evt);
+    const coordinate = evt.mapBrowserEvent.coordinate;
+    coords = { x: coordinate[1], y: coordinate[0] }
+    // const hdms = toStringHDMS(toLonLat(coordinate));
+    popup.setPosition(coordinate);
+  });
+  map.addInteraction(selectClick);
+  // ---------------------------------------------
+  node.removeAttribute("hidden");
 }
