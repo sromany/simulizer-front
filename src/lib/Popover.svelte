@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
 
     export let name = "Welcome to OpenLayers";
-    export let coords = { x: 0, y: 0 };
+    export let coords = { x: 0, y: 0, hdms: "" };
     export let popup: HTMLElement;
 
     onMount(async () => {
@@ -20,7 +20,11 @@
     <h3 class="popover-header">{name}</h3>
     <div class="popover-body">
         <p>The location you clicked was:</p>
-        <code>Lat: {coords.y} / Lon: {coords.x}</code>
+        {#if coords.hdms}
+            <code>{coords.hdms}</code>
+        {:else}
+            <code>Lat: {coords.y} / Lon: {coords.x}</code>
+        {/if}
     </div>
 </div>
 

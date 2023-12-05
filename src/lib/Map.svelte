@@ -14,9 +14,13 @@
   import { getAirports } from "../services/airports";
   import Select from "ol/interaction/Select";
   import { click } from "ol/events/condition";
+  import { toStringHDMS } from "ol/coordinate";
 
   let node;
-  let coords = { x: 0, y: 0 };
+  let data = {
+    coords: { x: 0, y: 0, hdms: "" },
+    name: "",
+  };
 
   useGeographic();
   onMount(async () => {
@@ -42,7 +46,10 @@
     do {
       const airports = await getAirports(++id);
       const airports_markers = airports.data.map((airport) => {
-        return createPointMarker([airport.longitude, airport.latitude]);
+        return createPointMarker(airport.name, [
+          airport.longitude,
+          airport.latitude,
+        ]);
       });
       vectorSource.addFeatures(airports_markers);
       has_next_page = airports.meta.hasNextPage;
@@ -59,12 +66,21 @@
     const selectClick = new Select({
       condition: click,
     });
+
     selectClick.on("select", function (evt) {
-      console.log(evt);
-      const coordinate = evt.mapBrowserEvent.coordinate;
-      coords = { x: coordinate[1], y: coordinate[0] };
-      // const hdms = toStringHDMS(toLonLat(coordinate));
-      popup.setPosition(coordinate);
+      if (evt.selected.length > 0) {
+        console.log(evt.selected[0].get("name"));
+        const coordinate = evt.selected[0].getGeometry()?.getCoordinates();
+        data = {
+          coords: {
+            x: coordinate[1],
+            y: coordinate[0],
+            hdms: toStringHDMS(coordinate),
+          },
+          name: evt.selected[0].get("name"),
+        };
+        popup.setPosition(coordinate);
+      }
     });
     map.addInteraction(selectClick);
     // ---------------------------------------------
@@ -73,7 +89,7 @@
 </script>
 
 <div tabindex="1" id="map"></div>
-<Popover bind:popup={node} bind:coords />
+<Popover {...data} bind:popup={node} />
 
 <style>
   #map {

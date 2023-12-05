@@ -42,10 +42,12 @@ export function createCircleMarker(coordinates: Array<number>, options: Options 
   return circleFeature;
 }
 
-export function createPointMarker(coordinates: Array<number>, options: Options = Options.default) {
+export function createPointMarker(name: string, coordinates: Array<number>, options: Options = Options.default) {
   // Ajouter un cercle à la couche vectorielle
-  const feature = new Feature(
-    new Point(coordinates),
+  const feature = new Feature({
+    geometry: new Point(coordinates),
+    name: name
+  }
   );
   return feature;
 }
