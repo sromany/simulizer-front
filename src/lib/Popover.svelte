@@ -3,15 +3,15 @@
 
     export let name = "Welcome to OpenLayers";
     export let coords = { x: 0, y: 0, hdms: "" };
-    export let popup: HTMLElement;
+    export let popupElement: HTMLElement;
 
     onMount(async () => {
-        popup.setAttribute("hidden", "true");
+        popupElement.setAttribute("hidden", "true");
     });
 </script>
 
 <div
-    bind:this={popup}
+    bind:this={popupElement}
     class="popover show"
     role="tooltip"
     data-popper-placement="left"
@@ -30,11 +30,12 @@
 
 <style>
     .popover-arrow {
-        position: relative;
+        position: absolute;
         width: 12px;
         height: 12px;
         background-color: #ffffff;
-        inset: 92px 142px;
+        inset: 100% 47.8% auto auto;
+        z-index: 1;
         border: gray solid 1px;
         border-top: none;
         clip-path: polygon(0 0, 100% 0%, 50% 50%);
@@ -52,8 +53,10 @@
         border: solid 1px rgba(0, 0, 0, 0.175);
         background-color: #ffffff;
         border-radius: 0px 0px 10px 10px;
+        z-index: 0;
     }
     .popover {
+        transform: translate(-50%, -110%);
         color: #212529;
         width: 300px;
         height: fit-content;

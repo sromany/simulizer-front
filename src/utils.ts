@@ -11,6 +11,8 @@ import OSM from "ol/source/OSM";
 import TileLayer from "ol/layer/Tile";
 import Map from "ol/Map";
 import { getAirports } from "./services/airports";
+import { toStringHDMS } from "ol/coordinate";
+import type { Writable } from "svelte/store";
 
 class Options {
   fill: any; stroke: any; strokeWidth: any; size: any;
@@ -64,8 +66,7 @@ function setupSelectFeatures(map: Map) {
 }
 
 
-
-export async function setup(node: HTMLElement, coords: any) {
+export async function setup(popupElement: HTMLElement, setPopupData: Function) {
   const vectorSource = new VectorSource();
   const map = new Map({
     layers: [
@@ -87,17 +88,19 @@ export async function setup(node: HTMLElement, coords: any) {
   let id = 0;
   do {
     const airports = await getAirports(++id);
-    const airports_markers = airports.data.map((airport) => {
-      return createPointMarker([airport.longitude, airport.latitude]);
+    const airports_markers = airports.data.map((airport:any) => {
+      return createPointMarker(airport.name, [
+        airport.longitude,
+        airport.latitude,
+      ]);
     });
     vectorSource.addFeatures(airports_markers);
     has_next_page = airports.meta.hasNextPage;
-  } while (has_next_page && false);
-
+  } while (has_next_page);
 
   // Popup overlay
   let popup = new Overlay({
-    element: node,
+    element: popupElement,
   });
   map.addOverlay(popup);
   // ---------------------------------------------
@@ -106,14 +109,16 @@ export async function setup(node: HTMLElement, coords: any) {
   const selectClick = new Select({
     condition: click,
   });
+
   selectClick.on("select", function (evt) {
-    console.log(evt);
-    const coordinate = evt.mapBrowserEvent.coordinate;
-    coords = { x: coordinate[1], y: coordinate[0] }
-    // const hdms = toStringHDMS(toLonLat(coordinate));
-    popup.setPosition(coordinate);
+    if (evt.selected.length > 0) {
+      console.log(evt.selected[0].get("name"));
+      const coordinate = evt.selected[0].getGeometry()?.getCoordinates();
+      setPopupData(evt.selected[0].get("name"), coordinate);
+      popup.setPosition(coordinate);
+    }
   });
   map.addInteraction(selectClick);
   // ---------------------------------------------
-  node.removeAttribute("hidden");
+  popupElement.removeAttribute("hidden");
 }
