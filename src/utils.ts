@@ -2,7 +2,7 @@ import Circle from "ol/geom/Circle";
 import Feature from "ol/Feature";
 import { Style, Fill, Stroke } from "ol/style";
 import { Point } from "ol/geom";
-import { View } from "ol";
+import { Overlay, View } from "ol";
 import Select from "ol/interaction/Select";
 import { click } from "ol/events/condition";
 import VectorSource from "ol/source/Vector";
@@ -11,6 +11,8 @@ import OSM from "ol/source/OSM";
 import TileLayer from "ol/layer/Tile";
 import Map from "ol/Map";
 import { getAirports } from "./services/airports";
+import { toStringHDMS } from "ol/coordinate";
+import type { Writable } from "svelte/store";
 
 class Options {
   fill: any; stroke: any; strokeWidth: any; size: any;
@@ -42,43 +44,29 @@ export function createCircleMarker(coordinates: Array<number>, options: Options 
   return circleFeature;
 }
 
-export function createPointMarker(coordinates: Array<number>, options: Options = Options.default) {
+export function createPointMarker(name: string, coordinates: Array<number>, options: Options = Options.default) {
   // Ajouter un cercle à la couche vectorielle
-  const feature = new Feature(
-    new Point(coordinates),
+  const feature = new Feature({
+    geometry: new Point(coordinates),
+    name: name
+  }
   );
   return feature;
 }
 
-export function testSelect(map: Map) {
-  const selected = new Style({
-    fill: new Fill({
-      color: "#eeeeee",
-    }),
-    stroke: new Stroke({
-      color: "rgba(255, 255, 255, 0.7)",
-      width: 2,
-    }),
-  });
-
-  // function selectStyle(feature: any) {
-  //   const color = feature.get("COLOR") || "rgb(255, 80, 80)";
-  //   selected.getFill().setColor(color);
-  //   return selected;
-  // }
-  // select interaction working on "pointermove"
+function setupSelectFeatures(map: Map) {
+  // select interaction
   const selectClick = new Select({
     condition: click,
-    // style: selectStyle,
-
   });
-
+  selectClick.on("select", function (evt) {
+    console.log(evt)
+  });
   map.addInteraction(selectClick);
-    selectClick.on("select", function (e) {
-  });
 }
 
-export async function setup() {
+
+export async function setup(popupElement: HTMLElement, setPopupData: Function) {
   const vectorSource = new VectorSource();
   const map = new Map({
     layers: [
@@ -95,15 +83,42 @@ export async function setup() {
       zoom: 2,
     }),
   });
+
   let has_next_page = true;
   let id = 0;
   do {
     const airports = await getAirports(++id);
-    const airports_markers = airports.data.map((airport) => {
-      return createPointMarker([airport.longitude, airport.latitude]);
+    const airports_markers = airports.data.map((airport:any) => {
+      return createPointMarker(airport.name, [
+        airport.longitude,
+        airport.latitude,
+      ]);
     });
     vectorSource.addFeatures(airports_markers);
     has_next_page = airports.meta.hasNextPage;
   } while (has_next_page);
-  testSelect(map);
+
+  // Popup overlay
+  let popup = new Overlay({
+    element: popupElement,
+  });
+  map.addOverlay(popup);
+  // ---------------------------------------------
+
+  // select interaction
+  const selectClick = new Select({
+    condition: click,
+  });
+
+  selectClick.on("select", function (evt) {
+    if (evt.selected.length > 0) {
+      console.log(evt.selected[0].get("name"));
+      const coordinate = evt.selected[0].getGeometry()?.getCoordinates();
+      setPopupData(evt.selected[0].get("name"), coordinate);
+      popup.setPosition(coordinate);
+    }
+  });
+  map.addInteraction(selectClick);
+  // ---------------------------------------------
+  popupElement.removeAttribute("hidden");
 }
