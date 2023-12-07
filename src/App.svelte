@@ -1,5 +1,6 @@
 <script lang="ts">
-  import Map from "./Map.svelte";
+  import Map from "./lib/Map.svelte";
+  import Popover from "./lib/Popover.svelte";
 
   const WIDTH = 640;
   const HEIGHT = 580;
