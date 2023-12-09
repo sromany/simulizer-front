@@ -10,9 +10,7 @@ import VectorLayer from "ol/layer/Vector";
 import OSM from "ol/source/OSM";
 import TileLayer from "ol/layer/Tile";
 import Map from "ol/Map";
-import { getAirports } from "./services/airports";
-import { toStringHDMS } from "ol/coordinate";
-import type { Writable } from "svelte/store";
+import { getAirports } from "../services/airports";
 
 class Options {
   fill: any; stroke: any; strokeWidth: any; size: any;
@@ -84,19 +82,7 @@ export async function setup(popupElement: HTMLElement, setPopupData: Function) {
     }),
   });
 
-  let has_next_page = true;
-  let id = 0;
-  do {
-    const airports = await getAirports(++id);
-    const airports_markers = airports.data.map((airport:any) => {
-      return createPointMarker(airport.name, [
-        airport.longitude,
-        airport.latitude,
-      ]);
-    });
-    vectorSource.addFeatures(airports_markers);
-    has_next_page = airports.meta.hasNextPage;
-  } while (has_next_page);
+  setupMarkers(vectorSource);
 
   // Popup overlay
   let popup = new Overlay({
@@ -116,9 +102,30 @@ export async function setup(popupElement: HTMLElement, setPopupData: Function) {
       const coordinate = evt.selected[0].getGeometry()?.getCoordinates();
       setPopupData(evt.selected[0].get("name"), coordinate);
       popup.setPosition(coordinate);
+      popupElement.hidden = false;
+    } else {
+      popupElement.hidden = true;
     }
   });
+
   map.addInteraction(selectClick);
   // ---------------------------------------------
   popupElement.removeAttribute("hidden");
+}
+
+
+async function setupMarkers(vectorSource: VectorSource) {
+  let has_next_page = true;
+  let id = 0;
+  do {
+    const airports = await getAirports(++id);
+    const airports_markers = airports.data.map((airport: any) => {
+      return createPointMarker(airport.name, [
+        airport.longitude,
+        airport.latitude,
+      ]);
+    });
+    vectorSource.addFeatures(airports_markers);
+    has_next_page = airports.meta.hasNextPage;
+  } while (has_next_page);
 }
