@@ -3,28 +3,16 @@
   import { onMount } from "svelte";
 
   import "ol/ol.css";
-  import { createPointMarker, setup } from "../utils";
+  import { setup } from "../utils/utils";
   import { useGeographic } from "ol/proj";
   import Popover from "./Popover.svelte";
-  import VectorSource from "ol/source/Vector";
-  import TileLayer from "ol/layer/Tile";
-  import OSM from "ol/source/OSM";
-  import VectorLayer from "ol/layer/Vector";
-  import { Map, Overlay, View } from "ol";
-  import { getAirports } from "../services/airports";
-  import Select from "ol/interaction/Select";
-  import { click } from "ol/events/condition";
   import { toStringHDMS } from "ol/coordinate";
+  import { popupdata } from "../store";
 
   let popupElement: HTMLElement;
-  let data = {
-    coords: { x: 0, y: 0, hdms: "" },
-    name: "",
-  };
 
   useGeographic();
-  
-  import { popupdata } from "../store";
+
   onMount(async () => {
     setup(popupElement, setPopupData);
   });
@@ -48,6 +36,6 @@
   #map {
     width: 100vw;
     height: 100vh;
-    color: rgb(255, 80, 80);
+    color: rgba(255, 80, 80, 1.0);
   }
 </style>

@@ -6,7 +6,7 @@
     export let popupElement: HTMLElement;
 
     onMount(async () => {
-        popupElement.setAttribute("hidden", "true");
+        popupElement.hidden = true;
     });
 </script>
 
