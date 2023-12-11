@@ -1,7 +1,7 @@
 import Circle from "ol/geom/Circle";
 import Feature from "ol/Feature";
 import { Style, Fill, Stroke } from "ol/style";
-import { Point } from "ol/geom";
+import { LineString, Point } from "ol/geom";
 import { Overlay, View } from "ol";
 import Select from "ol/interaction/Select";
 import { click } from "ol/events/condition";
@@ -10,7 +10,7 @@ import VectorLayer from "ol/layer/Vector";
 import OSM from "ol/source/OSM";
 import TileLayer from "ol/layer/Tile";
 import Map from "ol/Map";
-import { getAirports } from "../services/airports";
+import { getAirportConnections, getAirports } from "../services/airports";
 
 class Options {
   fill: any; stroke: any; strokeWidth: any; size: any;
@@ -20,47 +20,6 @@ class Options {
     strokeWidth: 2,
     size: 1,
   };
-}
-
-export function createCircleMarker(coordinates: Array<number>, options: Options = Options.default) {
-  // Ajouter un cercle à la couche vectorielle
-  const circleFeature = new Feature(
-    new Circle(coordinates, options.size), // Centre à [0, 0] et rayon de 1000000 mètres
-  );
-
-  // Style du cercle
-  const circleStyle = new Style({
-    fill: new Fill({
-      color: options.fill, // Remplissage rouge transparent
-    }),
-    stroke: new Stroke({
-      color: options.stroke, // Bordure rouge
-      width: options.strokeWidth,
-    }),
-  });
-  circleFeature.setStyle(circleStyle);
-  return circleFeature;
-}
-
-export function createPointMarker(name: string, coordinates: Array<number>, options: Options = Options.default) {
-  // Ajouter un cercle à la couche vectorielle
-  const feature = new Feature({
-    geometry: new Point(coordinates),
-    name: name
-  }
-  );
-  return feature;
-}
-
-function setupSelectFeatures(map: Map) {
-  // select interaction
-  const selectClick = new Select({
-    condition: click,
-  });
-  selectClick.on("select", function (evt) {
-    console.log(evt)
-  });
-  map.addInteraction(selectClick);
 }
 
 
@@ -82,8 +41,40 @@ export async function setup(popupElement: HTMLElement, setPopupData: Function) {
     }),
   });
 
-  setupMarkers(vectorSource);
+  setupPopupOverlay(map, popupElement, setPopupData);
+  setupAirportPoint(vectorSource);
+  setupAirportConnections(vectorSource);
+}
 
+
+async function setupAirportPoint(source: VectorSource) {
+  let has_next_page = true;
+  let id = 0;
+  do {
+    const airports = await getAirports(++id);
+    const airports_points = airports.data.map((airport: any) => {
+      return createPoint(airport);
+    });
+    source.addFeatures(airports_points);
+    has_next_page = airports.meta.hasNextPage;
+  } while (has_next_page);
+}
+
+async function setupAirportConnections(source: VectorSource) {
+  let has_next_page = true;
+  let id = 0;
+  do {
+    const connections = await getAirportConnections(++id);
+    const airports_connections = connections.data.map((connection: any) => {
+      return createLineString(connection);
+    });
+    source.addFeatures(airports_connections);
+    has_next_page = connections.meta.hasNextPage;
+  } while (has_next_page);
+}
+
+
+function setupPopupOverlay(map: Map, popupElement: HTMLElement, setPopupData: Function) {
   // Popup overlay
   let popup = new Overlay({
     element: popupElement,
@@ -98,34 +89,39 @@ export async function setup(popupElement: HTMLElement, setPopupData: Function) {
 
   selectClick.on("select", function (evt) {
     if (evt.selected.length > 0) {
-      console.log(evt.selected[0].get("name"));
-      const coordinate = evt.selected[0].getGeometry()?.getCoordinates();
-      setPopupData(evt.selected[0].get("name"), coordinate);
-      popup.setPosition(coordinate);
-      popupElement.hidden = false;
+      if(evt.selected[0].get("airport")) {
+        const coordinate = evt.selected[0].getGeometry()?.getCoordinates();
+        setPopupData(evt.selected[0].get("airport").name, coordinate);
+        popup.setPosition(coordinate);
+        popupElement.hidden = false;
+      }
+
     } else {
       popupElement.hidden = true;
     }
   });
 
   map.addInteraction(selectClick);
-  // ---------------------------------------------
-  popupElement.removeAttribute("hidden");
 }
 
+export function createPoint(airport: any, options: Options = Options.default) {
+  // Ajouter un cercle à la couche vectorielle
+  const coordinates = [airport.longitude, airport.latitude];
+  const feature = new Feature({
+    geometry: new Point(coordinates),
+    airport: airport
+  }
+  );
+  return feature;
+}
 
-async function setupMarkers(vectorSource: VectorSource) {
-  let has_next_page = true;
-  let id = 0;
-  do {
-    const airports = await getAirports(++id);
-    const airports_markers = airports.data.map((airport: any) => {
-      return createPointMarker(airport.name, [
-        airport.longitude,
-        airport.latitude,
-      ]);
-    });
-    vectorSource.addFeatures(airports_markers);
-    has_next_page = airports.meta.hasNextPage;
-  } while (has_next_page);
+function createLineString(connection: any, options: Options = Options.default) {
+  const startCoordinates = [connection.airports[0].longitude, connection.airports[0].latitude];
+  const endCoordinates = [connection.airports[1].longitude, connection.airports[1].latitude];
+  const feature = new Feature({
+    geometry: new LineString([startCoordinates, endCoordinates]),
+    connection: connection
+  }
+  );
+  return feature;
 }
