@@ -1,20 +1,19 @@
 <!-- Map.svelte -->
 <script lang="ts">
   import { onMount } from "svelte";
-
   import "ol/ol.css";
-  import { setup } from "../utils/utils";
+  import { MapManager } from "../utils/utils";
   import { useGeographic } from "ol/proj";
   import Popover from "./Popover.svelte";
   import { toStringHDMS } from "ol/coordinate";
   import { popupdata } from "../store";
 
-  let popupElement: HTMLElement;
-
+  // let popupElement: HTMLElement;
+  let mapManager: MapManager = new MapManager();
   useGeographic();
 
   onMount(async () => {
-    setup(popupElement, setPopupData);
+    mapManager.setup(setPopupData);
   });
 
   function setPopupData(name: string, coordinate: any) {
@@ -30,12 +29,12 @@
 </script>
 
 <div tabindex="-1" id="map"></div>
-<Popover {...$popupdata} bind:popupElement />
+<Popover {...$popupdata} bind:popupElement={mapManager.popupElement} />
 
 <style>
   #map {
     width: 100vw;
     height: 100vh;
-    color: rgba(255, 80, 80, 1.0);
+    color: rgba(255, 80, 80, 1);
   }
 </style>

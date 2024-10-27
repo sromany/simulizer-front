@@ -1,0 +1,292 @@
+{
+    "data": [
+      {
+        "id": "030d3e7e-69c3-4b73-a0fe-14687b8e5e20",
+        "airports": [
+          {
+            "idEnt": "ZSNJ",
+            "type": "large_airport",
+            "name": "Nanjing Lukou International Airport",
+            "latitude": 31.735032,
+            "longitude": 118.865949,
+            "municipality": "Nanjing",
+            "iataCode": "NKG"
+          },
+          {
+            "idEnt": "ZSHC",
+            "type": "large_airport",
+            "name": "Hangzhou Xiaoshan International Airport",
+            "latitude": 30.23609,
+            "longitude": 120.428865,
+            "municipality": "Hangzhou",
+            "iataCode": "HGH"
+          }
+        ],
+        "capacity": 19,
+        "speed": 78.22220831154499,
+        "frequency": 1.867745762016904,
+        "loadingTime": 4518,
+        "unloadingTime": 3931
+      },
+      {
+        "id": "0360ada0-3d03-4380-a3fc-e2a46246a500",
+        "airports": [
+          {
+            "idEnt": "TAO",
+            "type": "large_airport",
+            "name": "Qingdao Jiaodong International Airport",
+            "latitude": 36.361953,
+            "longitude": 120.088171,
+            "municipality": "Jiaozhou, Qingdao",
+            "iataCode": "TAO"
+          },
+          {
+            "idEnt": "YNT",
+            "type": "large_airport",
+            "name": "Yantai Penglai International Airport",
+            "latitude": 37.659724,
+            "longitude": 120.978124,
+            "municipality": "Yantai",
+            "iataCode": "YNT"
+          }
+        ],
+        "capacity": 23,
+        "speed": 84.61877663995752,
+        "frequency": 1.8351575660943438,
+        "loadingTime": 1806,
+        "unloadingTime": 4372
+      },
+      {
+        "id": "00bfa0af-4922-4f42-9423-3fb0813ec395",
+        "airports": [
+          {
+            "idEnt": "RKJB",
+            "type": "large_airport",
+            "name": "Muan International Airport",
+            "latitude": 34.991406,
+            "longitude": 126.382814,
+            "municipality": "Piseo-ri (Muan)",
+            "iataCode": "MWX"
+          },
+          {
+            "idEnt": "RKPK",
+            "type": "large_airport",
+            "name": "Gimhae International Airport",
+            "latitude": 35.179501,
+            "longitude": 128.938004,
+            "municipality": "Busan",
+            "iataCode": "PUS"
+          }
+        ],
+        "capacity": 19,
+        "speed": 94.87778431161962,
+        "frequency": 1.1136993588791948,
+        "loadingTime": 1919,
+        "unloadingTime": 1923
+      },
+      {
+        "id": "02bc0cdd-ee8c-40d6-bf48-2bbf58943aed",
+        "airports": [
+          {
+            "idEnt": "ZLXY",
+            "type": "large_airport",
+            "name": "Xi'an Xianyang International Airport",
+            "latitude": 34.447102,
+            "longitude": 108.751999,
+            "municipality": "Xianyang (Weicheng)",
+            "iataCode": "XIY"
+          },
+          {
+            "idEnt": "ZLLL",
+            "type": "large_airport",
+            "name": "Lanzhou Zhongchuan International Airport",
+            "latitude": 36.515202,
+            "longitude": 103.620003,
+            "municipality": "Lanzhou (Yongdeng)",
+            "iataCode": "LHW"
+          }
+        ],
+        "capacity": 15,
+        "speed": 82.69335955948537,
+        "frequency": 1.1057713207179376,
+        "loadingTime": 1684,
+        "unloadingTime": 3583
+      },
+      {
+        "id": "01f466e1-0c7e-499d-a5e4-42ed697e9b66",
+        "airports": [
+          {
+            "idEnt": "LATI",
+            "type": "large_airport",
+            "name": "Tirana International Airport Mother Teresa",
+            "latitude": 41.4146995544,
+            "longitude": 19.7206001282,
+            "municipality": "Tirana",
+            "iataCode": "TIA"
+          },
+          {
+            "idEnt": "LWSK",
+            "type": "large_airport",
+            "name": "Skopje International Airport",
+            "latitude": 41.958087,
+            "longitude": 21.622581,
+            "municipality": "Ilinden",
+            "iataCode": "SKP"
+          }
+        ],
+        "capacity": 21,
+        "speed": 71.80868831334799,
+        "frequency": 1.901710182154931,
+        "loadingTime": 4015,
+        "unloadingTime": 4750
+      },
+      {
+        "id": "030603e0-da68-4d1e-9209-9ef338834055",
+        "airports": [
+          {
+            "idEnt": "LFML",
+            "type": "large_airport",
+            "name": "Marseille Provence Airport",
+            "latitude": 43.439271922,
+            "longitude": 5.22142410278,
+            "municipality": "Marseille",
+            "iataCode": "MRS"
+          },
+          {
+            "idEnt": "LFBO",
+            "type": "large_airport",
+            "name": "Toulouse-Blagnac Airport",
+            "latitude": 43.629101,
+            "longitude": 1.36382,
+            "municipality": "Toulouse/Blagnac",
+            "iataCode": "TLS"
+          }
+        ],
+        "capacity": 14,
+        "speed": 96.12404720557919,
+        "frequency": 1.1819216855530503,
+        "loadingTime": 4665,
+        "unloadingTime": 4834
+      },
+      {
+        "id": "0116e19e-f4e7-458b-89b4-2aa4c145f151",
+        "airports": [
+          {
+            "idEnt": "LICJ",
+            "type": "large_airport",
+            "name": "Falcone–Borsellino Airport",
+            "latitude": 38.175999,
+            "longitude": 13.091,
+            "municipality": "Palermo",
+            "iataCode": "PMO"
+          },
+          {
+            "idEnt": "DTTA",
+            "type": "large_airport",
+            "name": "Tunis Carthage International Airport",
+            "latitude": 36.851002,
+            "longitude": 10.2272,
+            "municipality": "Tunis",
+            "iataCode": "TUN"
+          }
+        ],
+        "capacity": 19,
+        "speed": 88.11925627379796,
+        "frequency": 1.7368790730974664,
+        "loadingTime": 4658,
+        "unloadingTime": 4741
+      },
+      {
+        "id": "0359aa13-3b7a-437f-a587-510217fa1d22",
+        "airports": [
+          {
+            "idEnt": "KMCI",
+            "type": "large_airport",
+            "name": "Kansas City International Airport",
+            "latitude": 39.2976,
+            "longitude": -94.713898,
+            "municipality": "Kansas City",
+            "iataCode": "MCI"
+          },
+          {
+            "idEnt": "KTUL",
+            "type": "large_airport",
+            "name": "Tulsa International Airport",
+            "latitude": 36.19839859008789,
+            "longitude": -95.88809967041016,
+            "municipality": "Tulsa",
+            "iataCode": "TUL"
+          }
+        ],
+        "capacity": 14,
+        "speed": 75.5907371661146,
+        "frequency": 1.607538698741279,
+        "loadingTime": 3003,
+        "unloadingTime": 1869
+      },
+      {
+        "id": "027a6f08-44ff-4a88-b703-4248c4ea4ac0",
+        "airports": [
+          {
+            "idEnt": "MMLO",
+            "type": "large_airport",
+            "name": "Aeropuerto Internacional Del Bajío",
+            "latitude": 20.985813,
+            "longitude": -101.478825,
+            "municipality": "Ciudad de Silao",
+            "iataCode": "BJX"
+          },
+          {
+            "idEnt": "MMTO",
+            "type": "large_airport",
+            "name": "Aeropuerto Internacional Adolfo López Mateos",
+            "latitude": 19.338196,
+            "longitude": -99.570358,
+            "municipality": "Ciudad de Toluca",
+            "iataCode": "TLC"
+          }
+        ],
+        "capacity": 20,
+        "speed": 92.62296005321872,
+        "frequency": 1.1604168737844043,
+        "loadingTime": 4702,
+        "unloadingTime": 2991
+      },
+      {
+        "id": "01c17a03-78fe-42b4-9489-1d8e707e14cf",
+        "airports": [
+          {
+            "idEnt": "MRLB",
+            "type": "large_airport",
+            "name": "Guanacaste Airport",
+            "latitude": 10.5933,
+            "longitude": -85.544403,
+            "municipality": "Liberia",
+            "iataCode": "LIR"
+          },
+          {
+            "idEnt": "MPTO",
+            "type": "large_airport",
+            "name": "Tocumen International Airport",
+            "latitude": 9.0713596344,
+            "longitude": -79.3834991455,
+            "municipality": "Tocumen",
+            "iataCode": "PTY"
+          }
+        ],
+        "capacity": 22,
+        "speed": 82.66380622203044,
+        "frequency": 1.1404699749953136,
+        "loadingTime": 1677,
+        "unloadingTime": 3191
+      }
+    ],
+    "meta": {
+      "page": 1,
+      "take": 10,
+      "itemCount": 474,
+      "pageCount": 48,
+      "hasPreviousPage": false,
+      "hasNextPage": true
+    }
+  }
